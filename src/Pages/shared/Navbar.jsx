@@ -1,14 +1,30 @@
-import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthContext";
+import logo from '../../assets/job-logo.png'
 
 const Navbar = () => {
 
+const {user, signout} = useContext(AuthContext)
+
+const handleSignout = () => {
+  signout()
+  .then(() => {
+    alert("User Signed Out")
+  })
+  .catch(er => {
+    console.log(er)
+  })
+}
+
 const links = <>
- <li><a>Item 1</a></li>
+ <li><NavLink to='/'>Home</NavLink></li>
+ <li><NavLink to='/'>Home</NavLink></li>
+ <li><NavLink to='/'>Home</NavLink></li>
 </>
 
     return (
-        <div className="navbar py-3">
+        <div className="navbar py-3 max-w-6xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,7 +47,10 @@ const links = <>
              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className=" text-xl flex items-center gap-2">
+            <img className="w-12" src={logo} alt="" />
+            <h3 className="font-bold text-3xl">Job <span className="text-primary">Portal</span></h3>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -39,8 +58,16 @@ const links = <>
           </ul>
         </div>
         <div className="navbar-end gap-3">
-            <Link to='/register' className="underline text-primary font-semibold">Register</Link>
-          <Link to='/signIn' className="btn btn-primary">Sign In</Link>
+           {
+            user 
+            ? <>
+                         <button onClick={handleSignout} className="btn btn-primary">Sign Out</button>
+            </>
+            : <>
+             <Link to='/register' className="underline text-primary font-semibold">Register</Link>
+             <Link to='/signIn' className="btn btn-primary">Sign In</Link>
+            </>
+           }
         </div>
       </div>
     );

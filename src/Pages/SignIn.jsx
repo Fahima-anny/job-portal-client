@@ -1,7 +1,12 @@
 import Lottie from "lottie-react";
 import animation from '../assets/login.json'
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext/AuthContext";
+import SocialLogin from "./shared/SocialLogin";
 
 const SignIn = () => {
+
+    const {signinUser} = useContext(AuthContext) ;
 
     const handleSignin = e => {
         e.preventDefault() ;
@@ -10,13 +15,13 @@ const SignIn = () => {
         const pass = form.pass.value ;
         console.log(email, pass) ;
 
-//         createUser(email, pass)
-//         .then(res => {
-//           console.log(res.user)
-//         })
-// .catch(er => {
-//   console.error(er)
-// })
+        signinUser(email, pass)
+        .then(res => {
+          console.log(res.user)
+        })
+.catch(er => {
+  console.error(er)
+})
 
     }
 
@@ -46,6 +51,10 @@ const SignIn = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign In</button>
+
+                <div>
+                  <SocialLogin></SocialLogin>
+                </div>
               </div>
             </form>
           </div>
