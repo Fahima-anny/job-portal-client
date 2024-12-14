@@ -3,7 +3,7 @@ import logo from '../../assets/job-logo.png'
 const Footer = () => {
     return (
         <div className=" bg-base-200">
-            <footer className="footer text-base-content py-10 max-w-6xl mx-auto">
+            <footer className="footer text-base-content py-10 max-w-7xl mx-auto">
         <aside>
         <img src={logo} alt="" />
           <p className='text-xl font-semibold'>

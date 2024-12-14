@@ -24,7 +24,7 @@ const links = <>
 </>
 
     return (
-        <div className="navbar py-3 max-w-6xl mx-auto">
+        <div className="navbar py-3 max-w-7xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
