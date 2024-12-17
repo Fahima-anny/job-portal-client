@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../context/useAuth";
 import { link } from "motion/react-client";
+import Swal from "sweetalert2";
 
 
 const JobApply = () => {
 
 const {id} = useParams() ;
 const {user} = useAuth() ;
+const navigate = useNavigate() ;
 console.log(id, user);
 
 const handleApply = e => {
@@ -35,8 +37,27 @@ body: JSON.stringify(jobApplication)
 .then(res => res.json())
 .then(data => {
     console.log(data);
-    if(insertedId>0){
-        
+    if(data.insertedId){
+        Swal.fire({
+            title: "Applied Successfully",
+            text: "You have successfully applied for the job",
+            icon: "success",
+            showClass: {
+              popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `
+            },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `
+            }
+          });
+          navigate("/myApplications")
     }
 })
 }

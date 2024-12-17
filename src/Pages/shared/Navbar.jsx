@@ -19,8 +19,9 @@ const handleSignout = () => {
 
 const links = <>
  <li><NavLink to='/'>Home</NavLink></li>
- <li><NavLink to='/'>Home</NavLink></li>
- <li><NavLink to='/'>Home</NavLink></li>
+ <li><NavLink to='/myApplications'>My Applications</NavLink></li>
+ <li><NavLink to='/addJob'>Add Job</NavLink></li>
+ <li><NavLink to='/myPostedJobs'>My Posted Jobs</NavLink></li>
 </>
 
     return (
@@ -53,7 +54,7 @@ const links = <>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 gap-2">
            {links}
           </ul>
         </div>
