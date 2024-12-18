@@ -11,7 +11,7 @@ fetch("http://localhost:3000/jobs")
 .then(res => res.json())
 .then(data => setJobs(data))
 }, [])
-console.log(jobs)
+// console.log(jobs)
 
     return (
         <div className="py-20">

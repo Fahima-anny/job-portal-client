@@ -4,13 +4,14 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext/AuthContext";
 import SocialLogin from "./shared/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignIn = () => {
 
     const {signinUser} = useContext(AuthContext) ;
     const navigate = useNavigate() ;
     const location = useLocation() ;
-    console.log(location);
+    // console.log(location);
     const from = location.state || "/" ;
 
     const handleSignin = e => {
@@ -18,12 +19,28 @@ const SignIn = () => {
         const form = e.target ;
         const email = form.email.value ;
         const pass = form.pass.value ;
-        console.log(email, pass) ;
+        // console.log(email, pass) ;
 
         signinUser(email, pass)
         .then(res => {
-          console.log(res.user)
+          // console.log(res.user)
           navigate(from) ;
+
+          const user = {email} ;
+axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
+.then(res => {
+  console.log(res.data);
+})
+
+
+// axios.post("http://localhost:3000/jwt", user, {
+//   withCredentials: true
+// })
+// .then(res => {
+//   // console.log("axios inside");
+//   console.log("data from sign in",res.data);
+// })
+
         })
 .catch(er => {
   console.error(er)

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../context/useAuth";
 import MyApplicationTableRow from "./MyApplicationTableRow";
+import axios from "axios";
 
 
 const MyApplications = () => {
@@ -8,11 +9,17 @@ const MyApplications = () => {
 const {user} = useAuth() ;
 const [jobs, setJobs] = useState([]) ;
 useEffect( () => {
-    fetch(`http://localhost:3000/job-application?email=${user.email}`)
-    .then(res => res.json())
-    .then(data => {
-        setJobs(data) ;
-    })
+
+    // fetch(`http://localhost:3000/job-application?email=${user.email}`)
+    // .then(res => res.json())
+    // .then(data => {
+    //     setJobs(data) ;
+    // })
+    
+    axios.get(`http://localhost:3000/job-application?email=${user.email}`, {withCredentials: true})
+    .then(res => setJobs(res.data))
+
+
 } , [])
 console.log(jobs);
 
