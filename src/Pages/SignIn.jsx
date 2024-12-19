@@ -26,19 +26,10 @@ const SignIn = () => {
           // console.log(res.user)
           navigate(from) ;
 
-          const user = {email} ;
-axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
-.then(res => {
-  console.log(res.data);
-})
-
-
-// axios.post("http://localhost:3000/jwt", user, {
-//   withCredentials: true
-// })
+//           const user = {email} ;
+// axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
 // .then(res => {
-//   // console.log("axios inside");
-//   console.log("data from sign in",res.data);
+//   console.log(res.data);
 // })
 
         })

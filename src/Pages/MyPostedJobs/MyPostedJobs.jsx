@@ -12,7 +12,7 @@ const MyPostedJobs = () => {
             .then(res => res.json())
             .then(data => setJobs(data))
     }, [user.email])
-console.log(jobs);
+// console.log(jobs);
     return (
         <div>
             my posted jobs : {jobs.length}
