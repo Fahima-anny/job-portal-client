@@ -2,23 +2,32 @@ import { useEffect, useState } from "react";
 import useAuth from "../context/useAuth";
 import MyApplicationTableRow from "./MyApplicationTableRow";
 import axios from "axios";
+import useAxiosSecure from "../context/useAxiosSecure";
 
 
 const MyApplications = () => {
 
 const {user} = useAuth() ;
 const [jobs, setJobs] = useState([]) ;
+const axiosSecure = useAxiosSecure() ;
 useEffect( () => {
-
-    // fetch(`http://localhost:3000/job-application?email=${user.email}`)
+// with fetch 
+    // fetch(`https://job-portal-server-lime-six.vercel.app/job-application?email=${user.email}`)
     // .then(res => res.json())
     // .then(data => {
     //     setJobs(data) ;
     // })
     
-    axios.get(`http://localhost:3000/job-application?email=${user.email}`, {withCredentials: true})
-    .then(res => setJobs(res.data))
-} , [])
+    // with axios 
+    // axios.get(`https://job-portal-server-lime-six.vercel.app/job-application?email=${user.email}`, {withCredentials: true})
+    // .then(res => setJobs(res.data))
+
+// with axios hook 
+axiosSecure.get(`/job-application?email=${user.email}`)
+.then(res => setJobs(res.data))
+
+
+} , [user.email])
 // console.log(jobs);
 
     return (
@@ -44,7 +53,7 @@ useEffect( () => {
     <tbody>
 
 {
-    jobs.map(job => <MyApplicationTableRow
+    jobs?.map(job => <MyApplicationTableRow
      key={job._id}
       job={job}
       jobs={jobs}

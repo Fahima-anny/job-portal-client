@@ -34,12 +34,12 @@ import ViewApplications from "../Pages/ViewApplications/ViewApplications";
         {
             path: '/jobs/:id',
             element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+            loader: ({params}) => fetch(`https://job-portal-server-lime-six.vercel.app/jobs/${params.id}`)
         },
         {
             path: '/jobApply/:id',
             element: <PrivateRoute><JobApply></JobApply></PrivateRoute>,
-            // loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+            // loader: ({params}) => fetch(`https://job-portal-server-lime-six.vercel.app/jobs/${params.id}`)
         },
         {
             path: '/myApplications',
@@ -56,7 +56,7 @@ import ViewApplications from "../Pages/ViewApplications/ViewApplications";
         {
             path: '/viewJobApplication/:jobId',
             element: <PrivateRoute><ViewApplications></ViewApplications></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:3000/job-application/jobs/${params.jobId}`)
+            loader: ({params}) => fetch(`https://job-portal-server-lime-six.vercel.app/job-application/jobs/${params.jobId}`)
         },
       ]
     },

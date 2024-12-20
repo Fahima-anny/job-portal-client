@@ -27,7 +27,7 @@ const SignIn = () => {
           navigate(from) ;
 
 //           const user = {email} ;
-// axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
+// axios.post('https://job-portal-server-lime-six.vercel.app/jwt', user, {withCredentials: true})
 // .then(res => {
 //   console.log(res.data);
 // })

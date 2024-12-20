@@ -21,7 +21,7 @@ Swal.fire({
     confirmButtonText: "Yes, delete it!"
   }).then((result) => {
     if (result.isConfirmed) {
-        fetch(`http://localhost:3000/job-application/${_id}`, {
+        fetch(`https://job-portal-server-lime-six.vercel.app/job-application/${_id}`, {
             method: 'DELETE',
           })
           .then(res => res.json()) 

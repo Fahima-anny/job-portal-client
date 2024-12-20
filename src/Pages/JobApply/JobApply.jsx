@@ -27,7 +27,7 @@ const jobApplication = {
     resume
 }
 
-fetch("http://localhost:3000/job-application",{
+fetch("https://job-portal-server-lime-six.vercel.app/job-application",{
     method: 'POST',
     headers: {
         "content-type": "application/json"

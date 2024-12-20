@@ -46,14 +46,14 @@ const unSubscribe = onAuthStateChanged(auth, currentUser => {
     console.log("Current User : ", currentUser?.email) ;
  if(currentUser?.email){
     const user = {email : currentUser?.email} ;
-    axios.post("http://localhost:3000/jwt",user,{withCredentials: true})
+    axios.post("https://job-portal-server-lime-six.vercel.app/jwt",user,{withCredentials: true})
     .then(res => {
         console.log("login token",res.data);
         setLoading(false) ;
     })
  }
  else{
-axios.post("http://localhost:3000/logout", {} , {withCredentials: true})
+axios.post("https://job-portal-server-lime-six.vercel.app/logout", {} , {withCredentials: true})
 .then(res => {
     console.log("Logout theke :",res.data)
     setLoading(false) ;
