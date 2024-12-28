@@ -31,7 +31,7 @@ const {_id, title, company, company_logo, description, location, requirements, j
           <div className="card-actions justify-between items-center">
             <div>
                 <span className='text-gray-500'>Salary:</span>
-                 <span className='text-primary font-bold'> ${salaryRange.max}-{salaryRange.min}</span></div>
+                 <span className='text-primary font-bold'> ${salaryRange.min}-{salaryRange.max}</span></div>
             <Link to={`/jobs/${_id}`}><button className="btn btn-primary">Apply</button></Link>
           </div>
         </div>

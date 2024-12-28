@@ -12,6 +12,7 @@ import MyApplications from "../Pages/MyApplications";
 import AddAJob from "../Pages/AddAJob.jsx/AddAJob";
 import MyPostedJobs from "../Pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../Pages/ViewApplications/ViewApplications";
+import AllJobs from "../Pages/Alljobs/AllJobs";
 
   const router = createBrowserRouter([
     {
@@ -35,6 +36,11 @@ import ViewApplications from "../Pages/ViewApplications/ViewApplications";
             path: '/jobs/:id',
             element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
             loader: ({params}) => fetch(`https://job-portal-server-lime-six.vercel.app/jobs/${params.id}`)
+        },
+        {
+            path: '/allJobs',
+            element: <PrivateRoute><AllJobs></AllJobs></PrivateRoute>,
+            // loader: ({params}) => fetch(`https://job-portal-server-lime-six.vercel.app/jobs/${params.id}`)
         },
         {
             path: '/jobApply/:id',
